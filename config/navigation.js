@@ -48,5 +48,15 @@ export const navigationItems = [
         description: 'Gerar UUIDs únicos'
       }
     ]
+  },
+  {
+    title: 'Segurança',
+    items: [
+      {
+        name: 'Gerador de Senhas',
+        path: '/utils/password-generator',
+        description: 'Gerar senhas seguras e personalizáveis'
+      }
+    ]
   }
 ]

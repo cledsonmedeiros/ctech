@@ -23,7 +23,8 @@ export const products = [
     name: 'ReplayCam',
     url: '/replaycam/privacidade',
     external: false,
-    logo: null,
+    // Símbolo para fundo claro, do guia da marca do ReplayCam (docs/marca no repositório do app).
+    logo: '/products/replaycam.svg',
     description:
       'App Android que guarda os últimos segundos da câmera e salva o replay quando você pede. Funciona offline e não coleta dados pessoais.',
     cta: 'Política de privacidade',

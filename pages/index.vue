@@ -178,12 +178,7 @@
             class="flex flex-col bg-gray-50 p-8 rounded-2xl border border-gray-200 hover:border-blue-300 hover:shadow-lg transition-all duration-300"
           >
             <div class="flex items-center gap-4 mb-5">
-              <img v-if="product.logo" :src="product.logo" width="56" height="56" alt="" class="rounded-xl" />
-              <div v-else class="flex items-center justify-center h-14 w-14 rounded-xl bg-linear-to-r from-gray-700 to-gray-900 text-white" aria-hidden="true">
-                <svg class="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z" />
-                </svg>
-              </div>
+              <img :src="product.logo" width="56" height="56" alt="" class="rounded-xl" />
               <h3 class="text-2xl font-bold text-gray-900">{{ product.name }}</h3>
             </div>
             <p class="text-gray-600 leading-relaxed flex-1">{{ product.description }}</p>

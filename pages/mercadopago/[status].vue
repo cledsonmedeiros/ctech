@@ -3,6 +3,8 @@ definePageMeta({
   layout: false
 })
 
+usePageSeo({ title: 'Retorno do Mercado Pago', noindex: true })
+
 const route = useRoute();
 const status = route.params.status as string;
 const queryParams = route.query;

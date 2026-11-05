@@ -2,7 +2,7 @@
   <div class="min-h-screen bg-gray-50">
     <header class="bg-white border-b border-gray-200">
       <div class="max-w-3xl mx-auto px-4 sm:px-6 h-16 flex items-center">
-        <NuxtLink to="/" class="text-2xl font-bold text-blue-600 hover:text-blue-700">CTECH</NuxtLink>
+        <BrandLogo />
       </div>
     </header>
 
@@ -120,7 +120,7 @@
 
     <footer class="border-t border-gray-200 bg-white">
       <p class="max-w-3xl mx-auto px-4 sm:px-6 py-6 text-center text-sm text-gray-500">
-        © {{ new Date().getFullYear() }} CTech. Todos os direitos reservados.
+        © {{ new Date().getFullYear() }} CTECH. Todos os direitos reservados.
       </p>
     </footer>
   </div>
@@ -133,8 +133,8 @@ definePageMeta({
 
 const updatedAt = '15 de outubro de 2026'
 
-useHead({
-  title: 'Política de Privacidade do ReplayCam | CTECH',
-  meta: [{ name: 'description', content: 'Como o aplicativo ReplayCam trata os dados do seu aparelho.' }]
+usePageSeo({
+  title: 'Política de Privacidade do ReplayCam',
+  description: 'Como o aplicativo ReplayCam trata os dados do seu aparelho.'
 })
 </script>

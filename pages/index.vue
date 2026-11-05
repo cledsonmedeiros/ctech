@@ -5,12 +5,11 @@
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex justify-between items-center h-16">
           <div class="flex items-center">
-            <span class="text-2xl font-bold bg-linear-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent">
-              CTECH
-            </span>
+            <BrandLogo />
           </div>
           <div class="hidden md:flex items-center space-x-8">
             <a href="#servicos" @click.prevent="scrollToSection('servicos')" class="text-gray-700 hover:text-blue-600 transition-colors cursor-pointer">Serviços</a>
+            <a href="#produtos" @click.prevent="scrollToSection('produtos')" class="text-gray-700 hover:text-blue-600 transition-colors cursor-pointer">Produtos</a>
             <a href="#tecnologias" @click.prevent="scrollToSection('tecnologias')" class="text-gray-700 hover:text-blue-600 transition-colors cursor-pointer">Tecnologias</a>
             <a href="#contato" @click.prevent="scrollToSection('contato')" class="text-gray-700 hover:text-blue-600 transition-colors cursor-pointer">Contato</a>
             <NuxtLink
@@ -59,30 +58,6 @@
             >
               Explore ferramentas
             </NuxtLink>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Stats Section -->
-    <div class="py-12 bg-white">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="grid grid-cols-2 gap-8 md:grid-cols-4">
-          <div class="text-center">
-            <div class="text-4xl font-bold text-blue-600">50+</div>
-            <div class="mt-2 text-gray-600">Projetos entregues</div>
-          </div>
-          <div class="text-center">
-            <div class="text-4xl font-bold text-blue-600">30+</div>
-            <div class="mt-2 text-gray-600">Clientes satisfeitos</div>
-          </div>
-          <div class="text-center">
-            <div class="text-4xl font-bold text-blue-600">5+</div>
-            <div class="mt-2 text-gray-600">Anos de experiência</div>
-          </div>
-          <div class="text-center">
-            <div class="text-4xl font-bold text-blue-600">99%</div>
-            <div class="mt-2 text-gray-600">Satisfação</div>
           </div>
         </div>
       </div>
@@ -182,6 +157,59 @@
         </div>
       </div>
     </div>
+
+    <!-- Products Section -->
+    <section id="produtos" class="py-20 bg-white" aria-labelledby="produtos-titulo">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-16">
+          <h2 class="text-base text-blue-600 font-semibold tracking-wide uppercase">Nossos Produtos</h2>
+          <p id="produtos-titulo" class="mt-2 text-4xl font-extrabold text-gray-900 sm:text-5xl">
+            Feitos pela CTECH
+          </p>
+          <p class="mt-4 max-w-2xl mx-auto text-xl text-gray-600">
+            Aplicativos próprios que desenvolvemos e mantemos.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 gap-8 md:grid-cols-2 max-w-5xl mx-auto">
+          <article
+            v-for="product in products"
+            :key="product.name"
+            class="flex flex-col bg-gray-50 p-8 rounded-2xl border border-gray-200 hover:border-blue-300 hover:shadow-lg transition-all duration-300"
+          >
+            <div class="flex items-center gap-4 mb-5">
+              <img v-if="product.logo" :src="product.logo" width="56" height="56" alt="" class="rounded-xl" />
+              <div v-else class="flex items-center justify-center h-14 w-14 rounded-xl bg-linear-to-r from-gray-700 to-gray-900 text-white" aria-hidden="true">
+                <svg class="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z" />
+                </svg>
+              </div>
+              <h3 class="text-2xl font-bold text-gray-900">{{ product.name }}</h3>
+            </div>
+            <p class="text-gray-600 leading-relaxed flex-1">{{ product.description }}</p>
+            <a
+              v-if="product.external"
+              :href="product.url"
+              target="_blank"
+              rel="noopener"
+              class="mt-6 inline-flex items-center gap-2 self-start px-5 py-3 rounded-xl bg-blue-600 text-white font-semibold hover:bg-blue-700 transition-colors"
+            >
+              {{ product.cta }}
+              <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5h5v5M19 5l-9 9M10 5H6a1 1 0 00-1 1v12a1 1 0 001 1h12a1 1 0 001-1v-4" />
+              </svg>
+            </a>
+            <NuxtLink
+              v-else
+              :to="product.url"
+              class="mt-6 inline-flex items-center gap-2 self-start px-5 py-3 rounded-xl bg-white text-blue-600 font-semibold border-2 border-blue-600 hover:bg-blue-50 transition-colors"
+            >
+              {{ product.cta }}
+            </NuxtLink>
+          </article>
+        </div>
+      </div>
+    </section>
 
     <!-- Technologies Section -->
     <div id="tecnologias" class="py-20 bg-white">
@@ -302,11 +330,11 @@
     <!-- Footer -->
     <footer class="bg-gray-900 text-white">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
           <div>
-            <h3 class="text-2xl font-bold bg-linear-to-r from-blue-400 to-indigo-400 bg-clip-text text-transparent mb-4">
-              CTECH
-            </h3>
+            <div class="mb-4">
+              <BrandLogo dark />
+            </div>
             <p class="text-gray-400">
               Transformando ideias em soluções tecnológicas inovadoras desde 2020.
             </p>
@@ -315,9 +343,19 @@
             <h4 class="text-lg font-semibold mb-4">Links Rápidos</h4>
             <ul class="space-y-2">
               <li><a href="#servicos" class="text-gray-400 hover:text-white transition-colors">Serviços</a></li>
+              <li><a href="#produtos" class="text-gray-400 hover:text-white transition-colors">Produtos</a></li>
               <li><a href="#tecnologias" class="text-gray-400 hover:text-white transition-colors">Tecnologias</a></li>
               <li><NuxtLink to="/utils" class="text-gray-400 hover:text-white transition-colors">Ferramentas</NuxtLink></li>
               <li><a href="#contato" class="text-gray-400 hover:text-white transition-colors">Contato</a></li>
+            </ul>
+          </div>
+          <div>
+            <h4 class="text-lg font-semibold mb-4">Produtos</h4>
+            <ul class="space-y-2">
+              <li v-for="product in products" :key="product.name">
+                <a v-if="product.external" :href="product.url" target="_blank" rel="noopener" class="text-gray-400 hover:text-white transition-colors">{{ product.name }}</a>
+                <NuxtLink v-else :to="product.url" class="text-gray-400 hover:text-white transition-colors">{{ product.name }}</NuxtLink>
+              </li>
             </ul>
           </div>
           <div>
@@ -350,8 +388,55 @@
 </template>
 
 <script lang="ts" setup>
+import { site, products } from '~/config/site'
+
 definePageMeta({
   layout: false
+})
+
+usePageSeo({ description: site.description })
+
+// Dados estruturados: a empresa e os produtos que ela mantém.
+useHead({
+  script: [
+    {
+      type: 'application/ld+json',
+      innerHTML: JSON.stringify({
+        '@context': 'https://schema.org',
+        '@graph': [
+          {
+            '@type': 'Organization',
+            '@id': `${site.url}/#organization`,
+            name: site.name,
+            url: `${site.url}/`,
+            logo: `${site.url}/icon-512.png`,
+            email: site.email,
+            description: site.description,
+          },
+          {
+            '@type': 'WebSite',
+            name: site.name,
+            url: `${site.url}/`,
+            inLanguage: 'pt-BR',
+            publisher: { '@id': `${site.url}/#organization` },
+          },
+          ...products
+            .filter((product) => product.external)
+            .map((product) => ({
+              '@type': 'WebApplication',
+              name: product.name,
+              url: product.url,
+              description: product.description,
+              applicationCategory: 'FinanceApplication',
+              operatingSystem: 'Any',
+              isAccessibleForFree: true,
+              offers: { '@type': 'Offer', price: '0', priceCurrency: 'BRL' },
+              publisher: { '@id': `${site.url}/#organization` },
+            })),
+        ],
+      }),
+    },
+  ],
 })
 
 const scrollToSection = (sectionId: string) => {

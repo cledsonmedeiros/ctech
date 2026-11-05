@@ -2,6 +2,8 @@
 definePageMeta({
   layout: false
 })
+
+usePageSeo({ title: 'Redirecionando', noindex: true })
 const route = useRoute()
 const router = useRouter()
 

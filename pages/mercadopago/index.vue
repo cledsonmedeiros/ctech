@@ -63,6 +63,8 @@ definePageMeta({
   layout: false
 })
 
+usePageSeo({ title: 'Credenciamento Mercado Pago', noindex: true })
+
 import { ref, onMounted } from 'vue'
 
 const defaultPublicKey = "APP_USR-8682f2ea-a55b-4f0c-8729-4b62cd33767c";

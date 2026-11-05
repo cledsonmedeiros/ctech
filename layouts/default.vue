@@ -5,9 +5,7 @@
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex justify-between items-center h-16">
           <div class="flex items-center">
-            <NuxtLink to="/" class="text-2xl font-bold text-blue-600 hover:text-blue-700">
-              CTECH
-            </NuxtLink>
+            <BrandLogo />
           </div>
           <button 
             @click="toggleMenu" 
@@ -61,7 +59,7 @@
     <footer class="bg-white border-t border-gray-200">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
         <p class="text-center text-sm text-gray-500">
-          © {{ new Date().getFullYear() }} CTech. Todos os direitos reservados.
+          © {{ new Date().getFullYear() }} CTECH. Todos os direitos reservados.
         </p>
       </div>
     </footer>
@@ -69,11 +67,24 @@
 </template>
 
 <script lang="ts" setup>
-import { ref } from 'vue'
+import { ref, computed } from 'vue'
 import { navigationItems } from '~/config/navigation'
 
 const navigation = navigationItems
 const menuOpen = ref(false)
+
+// SEO das ferramentas a partir de config/navigation.js (nome e descrição de cada uma).
+const route = useRoute()
+const tool = computed(() =>
+  navigationItems.flatMap((section) => section.items).find((item) => item.path === route.path.replace(/\/+$/, ''))
+)
+usePageSeo({
+  title: () => (tool.value ? tool.value.name : 'Ferramentas para desenvolvedores'),
+  description: () =>
+    tool.value
+      ? `${tool.value.description}. Ferramenta online e gratuita da CTECH.`
+      : 'Ferramentas online e gratuitas para desenvolvedores: Base64, JSON, UUID, URL encoder, gerador de senhas e mais.',
+})
 
 const toggleMenu = () => {
   menuOpen.value = !menuOpen.value
